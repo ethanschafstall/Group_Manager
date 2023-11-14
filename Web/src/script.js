@@ -1,3 +1,5 @@
+index = 0;
+names = [];
 function addName() {
     const names = document.getElementById('names');
     const input = document.createElement('input');
@@ -12,20 +14,27 @@ function addName() {
     displayStudents();
 }
 function removeName(){
+    names[index-1] = "";
     const nameInputGroup = document.getElementById('names');
-    const input = document.createElement('input'); 
     if(nameInputGroup.children.length > 1)
     {
-        nameInputGroup.removeChild(nameInputGroup.children[nameInputGroup.children.length-1]);
+        nameInputGroup.removeChild(nameInputGroup.children[index-1]);
     }
+
 }
 function displayStudents()
 {
-    const names = document.getElementById('names');
-    document.getElementById("displayStudents").innerHTML = names.children[0].value;
-    for (let index = 0; index < nameInputGroup.children.length; index++) {
-        
-        const input = document.createElement('input');
-        document.getElementById("displayStudents").innerHTML = names.children[i].value;
-    }
+    var p = document.createElement("P");
+    p.appendChild(document.createTextNode(names[index]));
+    document.getElementById("displayStudents").appendChild(p);
+}
+function getName()
+{
+    const input = document.getElementById("name");
+    const inputValue = input.value
+    names.push(inputValue);
+    console.log(names[index])
+    input.value = "";
+    displayStudents()
+    index++;
 }
