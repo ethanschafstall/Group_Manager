@@ -1,19 +1,70 @@
-* {
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background: white;
+  height: 100vh;
+}
+main{
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.container {
+  background-color: #fff;
+  padding: 10px;
+  width:50%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-canvas {
-  border: 1px solid black;
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input {
+  width: calc(100% - 16px);
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+.button {
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  
+}
+.remove {
+  background-color: rgb(194, 48, 48);
+  padding: 10px;
+
+}
+.add {
+  background-color: #4caf50;
+  padding: 10px;
+}
+#names{
+  display: flex;
+  flex-direction: column;
+}
+#groupSize {
+  width: 60px;
+}
+
+#createGroupButton {
+  cursor: pointer;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
 }
