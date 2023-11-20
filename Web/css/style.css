@@ -1,5 +1,4 @@
 body {
-  flex-direction: column;
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   margin: 0;
@@ -13,7 +12,6 @@ body {
 .container {
   background-color: #fff;
   padding: 10px;
-  width:20%;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -45,10 +43,19 @@ input {
   background-color: #4caf50;
   padding: 10px;
 }
+
+.name {
+  background-color: #3498db;
+  padding: 10px;
+}
+.name:hover{
+  background-color: rgb(194, 48, 48);
+}
 #names{
   display: flex;
   flex-direction: column;
 }
+
 #groupSize {
   width: 60px;
 }
@@ -61,4 +68,18 @@ input {
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 4px;
+}
+#nameList{
+  display: flex;
+  flex-direction: column;
+}
+#nameList, button{
+  margin: 3px;
+}
+#displayStudents{
+  position: static;
+  margin-right: 100px;
+}
+#addNameContainer{
+  position: static;
 }

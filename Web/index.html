@@ -9,17 +9,23 @@
   </head>
   <body>
     <div id="displayStudents">
+      <ol id="nameList">
+        <br>
+      </ol>
     </div>
-    <h1>Group Manager</h1>
-    <div class="container">
-      <label for="name">Enter Names:</label>
-      <div class="name-input-group" id="nameInputGroup">
-        <div id="names">
-          <input type="text" id="name" name="name" placeholder="Name 1">
+    <div id="nameAddContainer">
+      <h1>Group Manager</h1>
+      <div class="container">
+        <div class="name-input-group" id="nameInputGroup">
+          <div id="names">
+            <label for="name">Enter Name:</label>
+            <input type="text" id="name" name="name" onfocus="this.value=''">
+            <button class="add button" type="submit" onclick="addToList()">Submit</button>
+          </div>
+          <!--<button class="remove button" onclick="removeName()">-</button>
+          <button class="add button" onclick="addName()">+</button>-->
         </div>
-        <button class="remove button" onclick="removeName()">-</button>
-        <button class="add button" onclick="addName()">+</button>
-      </div>
+    </div>
       <br>
       <label for="groupSize">Enter Group Size:</label>
       <input type="number" id="groupSize" name="groupSize" placeholder="No.">
