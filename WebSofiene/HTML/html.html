@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Nom</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <h1>Ajouter un Nom</h1>
+
+        <!-- Formulaire pour ajouter un nom -->
+        <form id="ajoutNomForm">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" required>
+            <button type="button" onclick="ajouterChampNom()">Ajouter un Nom</button>
+        </form>
+
+        <!-- Zone pour afficher les noms ajoutés -->
+        <div id="nomsAjoutes"></div>
+    </div>
+
+    <div>
+        <!-- Champ pour le groupe à droite -->
+        <label for="groupe">Groupe :</label>
+        <input type="text" id="groupe" name="groupe">
+        <button type="button" onclick="creationGroupe()">former groupe</button>
+    </div>
+    <script src="../JS/Algo.js"></script>
+
+</body>
+</html>
