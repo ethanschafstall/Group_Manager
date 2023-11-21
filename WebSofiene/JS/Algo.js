@@ -1,9 +1,14 @@
 let tableauDeNom =[];
+// liste des personnes
 let person =[];
+// table contenant tout les id possible
 let tableIDs=[];
-let groupIds = [];
+// liste des ids en fonction des personne
+let listIDs = [];
+// numéro de l'ID
 let id =0;
 let i =0;
+let idGroup;
 function ajouterChampNom(check = true) {
     console.log(check);
     if (check){
@@ -38,21 +43,34 @@ function creationGroupeSimple(){
 }
 function AttributionID(nomParticipant){
     person.push(nomParticipant);
-    console.log(`person : ${person}`);
     id++;
     tableIDs.push(id);
 }
 function creationGroupe(){
+    let cpt =1;
     let groupe =[];
     let randomId =0;
-    
+    let testTableau =[];
+    let blabla;
+    console.log(`tables des ID : ${tableIDs}`);
     for(i = 0;i < 2; i++){
         randomId = Math.floor(Math.random() * person.length);
+        console.log(`random ${cpt} : ${randomId}`);
+        cpt +=1 ;
         groupe.push(person[randomId]);
-        groupIds.push(tableIDs[randomId])
-        person.splice(randomId,1)
+        listIDs.push(tableIDs[randomId]);
+        //Suprime les éléments utilisé
+        person.splice(randomId,1);
+        tableIDs.splice(randomId,1);
+        if(i ==2){
+            blabla += randomId;
+        }
+        else blabla += randomId*10;
     }
-    //console.log(groupe);
+    blabla.toString();
+    testTableau.push(blabla);
     console.log(`groupe : ${groupe}`);
-    console.log(`groupID : ${groupIds}`);
+    console.log(`liste des IDs : ${listIDs}`);
+    console.log(`groupID : ${testTableau}`);
+    
 }
