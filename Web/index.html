@@ -8,28 +8,26 @@
     <title>Group Manager</title>
   </head>
   <body>
-    <div id="displayStudents">
-      <ol id="nameList">
-        <br>
-      </ol>
-    </div>
-    <div id="nameAddContainer">
-      <h1>Group Manager</h1>
-      <div class="container">
-        <div class="name-input-group" id="nameInputGroup">
-          <div id="names">
-            <label for="name">Enter Name:</label>
-            <input type="text" id="name" name="name" onfocus="this.value=''">
-            <button class="add button" type="submit" onclick="addToList()">Submit</button>
-          </div>
-          <!--<button class="remove button" onclick="removeName()">-</button>
-          <button class="add button" onclick="addName()">+</button>-->
+    <h1>Group Manager</h1>
+    <main>
+      <div class="container" id="nameInputGroup">
+        <div id="names">
+          <label for="name">Enter Name:</label>
+          <input type="text" id="name" name="name" onfocus="this.value=''">
+          <button class="submit button" type="submit" onclick="addToList()">Submit</button>
         </div>
-    </div>
-      <br>
-      <label for="groupSize">Enter Group Size:</label>
-      <input type="number" id="groupSize" name="groupSize" placeholder="No.">
-      <button id="createGroupButton" onclick="createGroups()">Create Groups</button>
-    </div>
+        <!--<button class="remove button" onclick="removeName()">-</button>
+        <button class="add button" onclick="addName()">+</button>-->
+    <br>
+    <label for="groupSize">Enter Group Size:</label>
+    <input type="number" id="groupSize" name="groupSize" placeholder="No." oninput="saveGroupSize(this.value)">
+    <button class="create button" onclick="createGroups(2)">Create Groups</button>
+  </div>
+      <div id="displayStudents" class="container">
+        <ol id="nameList">
+          <br>
+        </ol>
+      </div>
+    </main>
     </body>
 </html>
