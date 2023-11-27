@@ -7,11 +7,14 @@ let tableIDs=[];
 let listIDs = [];
 // numéro de l'ID
 let id =0;
+// nombre de personne par groupe
 let nombrePerGroupe = 2;
-let i =0;
+// fusion des id des personne de chaque groupe
 let grouID =[];
+// id final du groupe (pouvant aller dans la db)
 let finalGroupID =[];
-let idGroup;
+
+// fonction ajoutant un nom au site
 function ajouterChampNom(check = true) {
     console.log(check);
     if (check){
@@ -33,17 +36,27 @@ function ajouterChampNom(check = true) {
     }
     return tableauDeNom;
 }
+
+// création simplifier des groupes (sans toute les possibilités)
 function creationGroupeSimple(){
+    // tableau contenant les noms des participants
     let tableauNom = ajouterChampNom(false);
+    // tableau contenant le groupe choisit au hasard
     let groupe =[];
+    // index aléatoire allant être utiliser pour choisir la personne dans le tableau de nom
     let randomId =0;
-    for(i = 0;i < 2; i++){
+    // boucle créant les groupes de personne
+    for(i = 0;i < nombrePerGroupe; i++){
+        // choix d'un indexe aléatoire
         randomId = Math.floor(Math.random() * tableauNom.length);
+        // ajout de la personne choisie dans le groupe
         groupe.push(tableauNom[randomId]);
+        // effacemment de la peronne choisie du groupe des personnes 
         tableauNom.splice(randomId,1)
     }
     console.log(groupe);
 }
+// attribution d'un id à chque prénom
 function AttributionID(nomParticipant){
     person.push(nomParticipant);
     id++;
