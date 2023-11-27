@@ -1,8 +1,10 @@
+// Global variables
 var names=[];
 var groups=[];
 var groupSize;
 var counter = 0;
-
+var index = 0;
+// Listens for keyboard events
 document.addEventListener('keydown', (event) => {
     var name = event.key;
     var code = event.code;
@@ -13,14 +15,7 @@ document.addEventListener('keydown', (event) => {
     }
   }, false);
 
-function removeName(){
-    const nameInputGroup = document.getElementById('names');
-    const input = document.createElement('input'); 
-    if(nameInputGroup.children.length > 1)
-    {
-        nameInputGroup.removeChild(nameInputGroup.children[nameInputGroup.children.length-1]);
-    }
-}
+
 function addToList(){
     boxvalue = document.getElementById('name').value;
     if (boxvalue != "") {
@@ -51,77 +46,47 @@ function displayNameList(){
     }
 
 }
+
 function removeAllChildNodes() {
     const nameList = document.getElementById('nameList');
     nameList.innerHTML = '';
 }
+// Function which removes a name from both the names[] array, and from the visual html page.
 function removeName(id){
     console.log(id);
     names.splice(id,1);
     removeAllChildNodes();
     displayNameList();
 }
-/*
-function createGroups(){
-    counter = 0;
-    name1 = "";
-    name2 = "";
-    for (let i = 0; i < names.length-1; i++) {
-        for (let j = i+1; j < names.length; j++) {
-            name1 = names[i];
-            name2 = names[j];
-            groups[counter] = name1.concat("+", name2);
-            console.log(groups[counter]);
-            counter++;
-        }
-    }
-}*/
-
-function createGroups1(groupSize ,currentGroup = []) {
-    console.log(groupSize);
-    if (currentGroup.length === groupSize) {
-        groups.push(currentGroup.join('+'));
-        return;
-    }
-
-    for (let i = 0; i < names.length-1; i++) {
-        if (!currentGroup.includes(names[i])) {
-            createGroups([...currentGroup, names[i]]);
-        }
-    }
-    console.log(groups);
-}
-
-function createGroups(groupSize, currentGroup = []) {
-    if (currentGroup.length === groupSize) {
-        groups.push(currentGroup.join('+'));
-        return;
-    }
-
-    for (let i = counter; i < names.length; i++) {
-        if (!currentGroup.includes(names[i])) {
-            counter;
-            createGroups(groupSize, [...currentGroup, names[i]]);
-        }
-    }
-    console.log(groups);
-}
 
 function saveGroupSize(size) {
     groupSize = size;
     console.log(groupSize);
 }
-// TESTING
-// n being the amount of people, r being the group size.
-function amountOfWeeks(n, r){
-    let nValue = fractorial(n);
-    let rValue = fractorial(r);
-}
-function fractorial(n){
-    if (n === 0){
-        return 1;
+
+
+
+function getInputValue() {
+  output.innerHTML = "";
+  const values = input.value;
+  const total = sums.value;
+  let person = values.split(",");
+
+  let random = person.sort(() => Math.random() - 0.5);
+  console.log(random);
+  
+  function chunk(array, size) {
+    if (array.length <= size) {
+      return [array];
     }
-    else{
-        return n* fractorial(n-1);
-    }
+  
+    return [array.slice(0, size), ...chunk(array.slice(size), size)];
 }
+  
+var team = chunk(random, total);
+  for (let i = 0; i < team.length; i++) {
+    output.innerHTML += `<p> Team-${i + 1}: ${team[i]} </p>`;
+  }
+}
+
+
