@@ -7,8 +7,14 @@ let tableIDs=[];
 let listIDs = [];
 // numéro de l'ID
 let id =0;
-let i =0;
-let idGroup;
+// nombre de personne par groupe
+let nombrePerGroupe = 2;
+// fusion des id des personne de chaque groupe
+let grouID =[];
+// id final du groupe (pouvant aller dans la db)
+let finalGroupID =[];
+
+// fonction ajoutant un nom au site
 function ajouterChampNom(check = true) {
     console.log(check);
     if (check){
@@ -30,47 +36,72 @@ function ajouterChampNom(check = true) {
     }
     return tableauDeNom;
 }
+
+// création simplifier des groupes (sans toute les possibilités)
 function creationGroupeSimple(){
+    // tableau contenant les noms des participants
     let tableauNom = ajouterChampNom(false);
+    // tableau contenant le groupe choisit au hasard
     let groupe =[];
+    // index aléatoire allant être utiliser pour choisir la personne dans le tableau de nom
     let randomId =0;
-    for(i = 0;i < 2; i++){
+    // boucle créant les groupes de personne
+    for(i = 0;i < nombrePerGroupe; i++){
+        // choix d'un indexe aléatoire
         randomId = Math.floor(Math.random() * tableauNom.length);
+        // ajout de la personne choisie dans le groupe
         groupe.push(tableauNom[randomId]);
+        // effacemment de la peronne choisie du groupe des personnes 
         tableauNom.splice(randomId,1)
     }
     console.log(groupe);
 }
+// attribution d'un id à chque prénom
 function AttributionID(nomParticipant){
     person.push(nomParticipant);
     id++;
     tableIDs.push(id);
 }
 function creationGroupe(){
-    let cpt =1;
     let groupe =[];
     let randomId =0;
-    let testTableau =[];
-    let blabla;
+    let tableauTransition =[];
     console.log(`tables des ID : ${tableIDs}`);
-    for(i = 0;i < 2; i++){
+    for(i = 0;i < nombrePerGroupe; i++){
         randomId = Math.floor(Math.random() * person.length);
-        console.log(`random ${cpt} : ${randomId}`);
-        cpt +=1 ;
-        groupe.push(person[randomId]);
-        listIDs.push(tableIDs[randomId]);
-        //Suprime les éléments utilisé
-        person.splice(randomId,1);
-        tableIDs.splice(randomId,1);
-        if(i ==2){
-            blabla += randomId;
+        // ajout des personnes dans un group si ils n'y sont pas déjà
+        if (groupe.indexOf(person[randomId]) === -1) {
+            groupe.push(person[randomId]);
+            if(groupe.length < nombrePerGroupe -1){
+                groupe.length =0;
+            }
         }
-        else blabla += randomId*10;
+        // ajout des id de la table dans la list + ajout des id de la list dans blabla
+        if(listIDs.indexOf(tableIDs[randomId]) === -1){
+            listIDs.push(tableIDs[randomId])
+        }
+        if (tableauTransition.indexOf(tableIDs[randomId]) === -1) {
+            tableauTransition.push(tableIDs[randomId]);
+        }
+        
+        //Suprime les éléments utilisé
+        //person.splice(randomId,1);
+        //tableIDs.splice(randomId,1);
+        // boucle ajoutant les elements de blabla à testTableau
+        if(i == 1){
+            if (tableauTransition.indexOf() === -1) {
+                if(tableauTransition.length > 1){
+                    grouID.push(tableauTransition.join(''));
+                }   
+            }
+        }
     }
-    blabla.toString();
-    testTableau.push(blabla);
+    finalGroupID = grouID.filter((element, index, self) =>{
+        return self.indexOf(element) === index;
+    });
     console.log(`groupe : ${groupe}`);
     console.log(`liste des IDs : ${listIDs}`);
-    console.log(`groupID : ${testTableau}`);
-    
+    console.log(`tableauTransition : ${tableauTransition}`);
+    console.log(`groupID : ${finalGroupID}`);
 }
+
