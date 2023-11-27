@@ -8,6 +8,8 @@ let listIDs = [];
 // numéro de l'ID
 let id =0;
 let i =0;
+let grouID =[];
+let finalGroupID =[];
 let idGroup;
 function ajouterChampNom(check = true) {
     console.log(check);
@@ -50,27 +52,31 @@ function creationGroupe(){
     let cpt =1;
     let groupe =[];
     let randomId =0;
-    let testTableau =[];
-    let blabla;
+    let blabla =[];
     console.log(`tables des ID : ${tableIDs}`);
     for(i = 0;i < 2; i++){
         randomId = Math.floor(Math.random() * person.length);
         console.log(`random ${cpt} : ${randomId}`);
         cpt +=1 ;
+        // ajout des personnes dans un group
         groupe.push(person[randomId]);
-        listIDs.push(tableIDs[randomId]);
+        // ajout des id de la table dans la list + ajout des id de la list dans blabla
+        listIDs.push(tableIDs[randomId])
+        blabla.push(tableIDs[randomId]);
         //Suprime les éléments utilisé
-        person.splice(randomId,1);
-        tableIDs.splice(randomId,1);
-        if(i ==2){
-            blabla += randomId;
+        //person.splice(randomId,1);
+        //tableIDs.splice(randomId,1);
+        // boucle ajoutant les elements de blabla à testTableau
+        if(i == 1){
+            grouID.push(blabla.join(''));
         }
-        else blabla += randomId*10;
     }
-    blabla.toString();
-    testTableau.push(blabla);
+    finalGroupID = grouID.filter((element, index, self) =>{
+        return self.indexOf(element) === index;
+    });
     console.log(`groupe : ${groupe}`);
     console.log(`liste des IDs : ${listIDs}`);
-    console.log(`groupID : ${testTableau}`);
-    
+    console.log(`blabla : ${blabla}`);
+    console.log(`groupID : ${finalGroupID}`);
 }
+
