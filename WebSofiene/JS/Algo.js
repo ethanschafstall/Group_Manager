@@ -21,6 +21,8 @@ let tableauTransitionPerson =[];
 let nbSemaine =2;
 // bool indiquant si la boucle de création de groupe doit recommencer dans le cas ou un groupe ne respecte pas les conditions requise
 let again;
+// compteur du nombre de fois qu'un groupe n'est pas valide
+let cptWrongGroup =0;
 
 
 // fonction ajoutant un nom au site
@@ -121,7 +123,7 @@ function creationGroupe(){
                     if(tableauTransitionID.length > numberPersonOfGroup -1){
                         // ajout de la concaténation des IDs dans le groupID
                         groupID.push(tableauTransitionID.join(''));
-                    }   
+                    }     
                 }
                 // Concaténation des membre du groupe 
                 if(groupe.length > numberPersonOfGroup -1){
@@ -129,6 +131,9 @@ function creationGroupe(){
                     if (tableauTransitionPerson.indexOf(groupe.join('+')) === -1) {
                         // ajout de la concaténation des membre du groupe 
                         tableauTransitionPerson.push(groupe.join('+'));
+                    }
+                    else{
+                        cptWrongGroup ++;
                     }
                 }   
             }
@@ -139,9 +144,13 @@ function creationGroupe(){
         });
         // filtarge des groupe afin de ne garder que des groupe unique (prise en compte de l'ordre)
         finalGroup = tableauTransitionPerson.filter((element, index, self) =>{
-             return self.indexOf(element) === index;
+            return self.indexOf(element) === index;
         });
-        
+}
+function CallcreationGroupe(){
+    do{
+        creationGroupe();
+    }while(cptWrongGroup < 100)
 }
 // affichage des groupe
 function Affichage(){
