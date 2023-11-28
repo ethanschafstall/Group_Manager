@@ -8,7 +8,7 @@ let listIDs = [];
 // numéro de l'ID
 let id =0;
 // nombre de personne par groupe
-let nombrePerGroupe = 2;
+let nombrePerGroupe = 4;
 // fusion des id des personne de chaque groupe
 let grouID =[];
 // id final du groupe (pouvant aller dans la db)
@@ -64,6 +64,7 @@ function creationGroupeSimple(){
 }
 // attribution d'un id à chque prénom
 function AttributionID(nomParticipant){
+    // ajout du nom de la personne à la liste 
     person.push(nomParticipant);
     id++;
     tableIDs.push(id);
@@ -73,14 +74,14 @@ function creationGroupe(){
     let groupe =[];
     let randomId =0;
     let tableauTransition =[];
-        
-        console.log(`tables des ID : ${tableIDs}`);
+    
+        //console.log(`tables des ID : ${tableIDs}`);
         for(i = 0;i < nombrePerGroupe; i++){
             randomId = Math.floor(Math.random() * person.length);
             // ajout des personnes dans un group si ils n'y sont pas déjà
             if (groupe.indexOf(person[randomId]) === -1) {
                 groupe.push(person[randomId]);
-                if(groupe.length < nombrePerGroupe -1){
+                if(groupe.length < nombrePerGroupe ){
                     groupe.length =0;
                     }
                 }
@@ -92,11 +93,11 @@ function creationGroupe(){
                 tableauTransition.push(tableIDs[randomId]);
             }
             if(groupe.length < nombrePerGroupe){
-                again = true;
+                //again = true;
             }
-            else{
+            //else{
                 again = false;
-            }
+            //}
             if(i == nombrePerGroupe-1){
                 if (tableauTransition.indexOf() === -1) {
                     if(tableauTransition.length > nombrePerGroupe -1){
