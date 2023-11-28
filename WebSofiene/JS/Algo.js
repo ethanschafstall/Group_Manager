@@ -13,6 +13,12 @@ let nombrePerGroupe = 2;
 let grouID =[];
 // id final du groupe (pouvant aller dans la db)
 let finalGroupID =[];
+// tableau final contenant les groupe allant être afficher
+let finalGroup =[];
+let tableauTransitionPerson =[];
+let nbSemaine =4;
+let again;
+
 
 // fonction ajoutant un nom au site
 function ajouterChampNom(check = true) {
@@ -63,45 +69,64 @@ function AttributionID(nomParticipant){
     tableIDs.push(id);
 }
 function creationGroupe(){
+    // tableau de groupe de base (l'innitialiser dans la boucle si veut ne monter qu'un seul groupe)
     let groupe =[];
     let randomId =0;
     let tableauTransition =[];
-    console.log(`tables des ID : ${tableIDs}`);
-    for(i = 0;i < nombrePerGroupe; i++){
-        randomId = Math.floor(Math.random() * person.length);
-        // ajout des personnes dans un group si ils n'y sont pas déjà
-        if (groupe.indexOf(person[randomId]) === -1) {
-            groupe.push(person[randomId]);
-            if(groupe.length < nombrePerGroupe -1){
-                groupe.length =0;
-            }
-        }
-        // ajout des id de la table dans la list + ajout des id de la list dans blabla
-        if(listIDs.indexOf(tableIDs[randomId]) === -1){
-            listIDs.push(tableIDs[randomId])
-        }
-        if (tableauTransition.indexOf(tableIDs[randomId]) === -1) {
-            tableauTransition.push(tableIDs[randomId]);
-        }
         
-        //Suprime les éléments utilisé
-        //person.splice(randomId,1);
-        //tableIDs.splice(randomId,1);
-        // boucle ajoutant les elements de blabla à testTableau
-        if(i == 1){
-            if (tableauTransition.indexOf() === -1) {
-                if(tableauTransition.length > 1){
-                    grouID.push(tableauTransition.join(''));
-                }   
+        console.log(`tables des ID : ${tableIDs}`);
+        for(i = 0;i < nombrePerGroupe; i++){
+            randomId = Math.floor(Math.random() * person.length);
+            // ajout des personnes dans un group si ils n'y sont pas déjà
+            if (groupe.indexOf(person[randomId]) === -1) {
+                groupe.push(person[randomId]);
+                if(groupe.length < nombrePerGroupe -1){
+                    groupe.length =0;
+                    }
+                }
+            // ajout des id de la table dans la list + ajout des id de la list dans blabla
+            if(listIDs.indexOf(tableIDs[randomId]) === -1){
+                listIDs.push(tableIDs[randomId])
+            }
+            if (tableauTransition.indexOf(tableIDs[randomId]) === -1) {
+                tableauTransition.push(tableIDs[randomId]);
+            }
+            if(groupe.length < nombrePerGroupe){
+                again = true;
+            }
+            else{
+                again = false;
+            }
+            if(i == nombrePerGroupe-1){
+                if (tableauTransition.indexOf() === -1) {
+                    if(tableauTransition.length > nombrePerGroupe -1){
+                        grouID.push(tableauTransition.join(''));
+                    }   
+                }
+                if(groupe.length > nombrePerGroupe -1){
+                    if (tableauTransitionPerson.indexOf(groupe.join('+')) === -1) {
+                        tableauTransitionPerson.push(groupe.join('+'));
+                    }
+                }    
             }
         }
+        finalGroupID = grouID.filter((element, index, self) =>{
+            return self.indexOf(element) === index;
+        });
+        finalGroup = tableauTransitionPerson.filter((element, index, self) =>{
+             return self.indexOf(element) === index;
+        });
+}
+function Affichage(){
+    console.log(`again : ${again}`);
+    if(again === true){
+        do{
+            creationGroupe();
+        }while(again !== false)
     }
-    finalGroupID = grouID.filter((element, index, self) =>{
-        return self.indexOf(element) === index;
-    });
-    console.log(`groupe : ${groupe}`);
-    console.log(`liste des IDs : ${listIDs}`);
-    console.log(`tableauTransition : ${tableauTransition}`);
-    console.log(`groupID : ${finalGroupID}`);
+    if(again === false){
+        console.log(`finalGroupe : ${finalGroup}`);
+        console.log(`finalgroupID : ${finalGroupID}`);
+    }
 }
 
