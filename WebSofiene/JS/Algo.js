@@ -131,6 +131,7 @@ function creationGroupe(){
                     if (tableauTransitionPerson.indexOf(groupe.join('+')) === -1) {
                         // ajout de la concaténation des membre du groupe 
                         tableauTransitionPerson.push(groupe.join('+'));
+                        cptWrongGroup =0;
                     }
                     else{
                         cptWrongGroup ++;
