@@ -31,12 +31,10 @@ main{
   flex-direction: column;
   align-items:stretch;
 }
-
 label {
   display: block;
   margin-bottom: 8px;
 }
-
 input {
   width: calc(100% - 16px);
   padding: 8px;
@@ -79,11 +77,9 @@ input {
   display: flex;
   flex-direction: column;
 }
-
 #groupSize {
   width: 60px;
 }
-
 #createGroupButton {
   cursor: pointer;
   background-color: #3498db;

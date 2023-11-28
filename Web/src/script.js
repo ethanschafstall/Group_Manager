@@ -4,7 +4,8 @@ var groups=[];
 var groupSize;
 var counter = 0;
 var index = 0;
-// Listens for keyboard events
+
+// Listens for keyboard events, if the enter key is detected then it adds the name input text to the list of names.
 document.addEventListener('keydown', (event) => {
     var name = event.key;
     var code = event.code;
@@ -15,7 +16,7 @@ document.addEventListener('keydown', (event) => {
     }
   }, false);
 
-
+// Adds 
 function addToList(){
     boxvalue = document.getElementById('name').value;
     if (boxvalue != "") {
@@ -27,6 +28,7 @@ function addToList(){
     removeAllChildNodes();
     displayNameList();
 }
+// Function which displays all
 function displayNameList(){
     
     const nameList = document.getElementById('nameList');
@@ -46,7 +48,7 @@ function displayNameList(){
     }
 
 }
-
+// Function which removes all tags (child nodes) within the nameList div. Used for updating the display when names are added/removes.
 function removeAllChildNodes() {
     const nameList = document.getElementById('nameList');
     nameList.innerHTML = '';
@@ -58,7 +60,7 @@ function removeName(id){
     removeAllChildNodes();
     displayNameList();
 }
-
+// Function which saves user input for the desired group size.
 function saveGroupSize(size) {
     groupSize = size;
     console.log(groupSize);

@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: auto;
+
+}
+.weekTab{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    background-color: rgb(238, 238, 238);
+    height: 30px;
+    border-right: #757575 solid 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+}
+.weekTab:hover{
+    background-color: white;
+}
+#week-container {
+    display: flex;
+    background-color: #f0f0f0;
+    width: 100%;
+}
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.tab:hover {
+    background-color: #ddd;
+}
+.content {
+    padding: 20px;
+}
+
+body {
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: auto;
+    padding: 20px;
+    
+  }
+  body, h1{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  main{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+  }
+  .container {
+    background-color: #fff;
+    padding: 0px;
+    width:fit-content;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items:stretch;
+    width: fit-content;
+  }
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  input {
+    width: calc(100% - 16px);
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+  }
+  .button {
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    overflow: hidden;
+    word-wrap: break-word;
+  }
+  .remove {
+    background-color: rgb(194, 48, 48);
+    padding: 10px;
+  
+  }
+  .submit {
+    background-color: #4caf50;
+    padding: 10px;
+  }
+  .submit:hover {
+    background-color: #3c8b3e;
+    padding: 10px;
+  }
+  .name, .create {
+    background-color: #3498db;
+    padding: 10px;
+  }
+  .create:hover {
+    background-color: #2974a5;
+    padding: 10px;
+  }
+  .name:hover{
+    background-color: rgb(194, 48, 48);
+  }
+  #names{
+    display: flex;
+    flex-direction: column;
+  }
+  #groupSize {
+    width: 60px;
+  }
+  #createGroupButton {
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  #nameList{
+    padding: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+  
+  }
+  #nameList, button{
+    margin: 3px;
+  }
+  #displayStudents{
+    position: static;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 600px;
+  }
+  #addNameContainer{
+    position: static;
+  
+  }
+  #nameInputGroup, #names{
+    height: fit-content;
+    align-items: right;
+  }
