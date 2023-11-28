@@ -8,15 +8,18 @@ let listIDs = [];
 // numéro de l'ID
 let id =0;
 // nombre de personne par groupe
-let nombrePerGroupe = 4;
+let numberPersonOfGroup = 3;
 // fusion des id des personne de chaque groupe
-let grouID =[];
+let groupID =[];
 // id final du groupe (pouvant aller dans la db)
 let finalGroupID =[];
 // tableau final contenant les groupe allant être afficher
 let finalGroup =[];
+// tableau de transition servant à la concaténation des membres du groupe 
 let tableauTransitionPerson =[];
-let nbSemaine =4;
+// nombre de semaine choisi par le user (pas encore utiliser)
+let nbSemaine =2;
+// bool indiquant si la boucle de création de groupe doit recommencer dans le cas ou un groupe ne respecte pas les conditions requise
 let again;
 
 
@@ -52,7 +55,7 @@ function creationGroupeSimple(){
     // index aléatoire allant être utiliser pour choisir la personne dans le tableau de nom
     let randomId =0;
     // boucle créant les groupes de personne
-    for(i = 0;i < nombrePerGroupe; i++){
+    for(i = 0;i < numberPersonOfGroup; i++){
         // choix d'un indexe aléatoire
         randomId = Math.floor(Math.random() * tableauNom.length);
         // ajout de la personne choisie dans le groupe
@@ -60,74 +63,101 @@ function creationGroupeSimple(){
         // effacemment de la peronne choisie du groupe des personnes 
         tableauNom.splice(randomId,1)
     }
+    // affichage du groupe
     console.log(groupe);
 }
 // attribution d'un id à chque prénom
 function AttributionID(nomParticipant){
     // ajout du nom de la personne à la liste 
     person.push(nomParticipant);
+    // augmentation de 1 de l'ID pour la prière personne
     id++;
+    // ajout de l'id dans le tableau des IDs
     tableIDs.push(id);
 }
 function creationGroupe(){
     // tableau de groupe de base (l'innitialiser dans la boucle si veut ne monter qu'un seul groupe)
     let groupe =[];
-    let randomId =0;
-    let tableauTransition =[];
-    
-        //console.log(`tables des ID : ${tableIDs}`);
-        for(i = 0;i < nombrePerGroupe; i++){
-            randomId = Math.floor(Math.random() * person.length);
+    // indexe aléatoire pour le choix d'une personne
+    let randomIndex =0;
+    // tableau de transition servant à la concaténation des IDs des membre du groupe
+    let tableauTransitionID =[];
+
+        for(i = 0;i < numberPersonOfGroup; i++){
+            // choix aléatoire de l'indexe
+            randomIndex = Math.floor(Math.random() * person.length);
             // ajout des personnes dans un group si ils n'y sont pas déjà
-            if (groupe.indexOf(person[randomId]) === -1) {
-                groupe.push(person[randomId]);
-                if(groupe.length < nombrePerGroupe ){
+            if (groupe.indexOf(person[randomIndex]) === -1) {
+                // ajout de la personne choisi dans le groupe
+                groupe.push(person[randomIndex]);
+            }
+            // ajout des id de la table dans la list (si ils n'y sont pas déjà) + ajout des id de la liste dans tableauTransitionID
+            if(listIDs.indexOf(tableIDs[randomIndex]) === -1){
+                // ajout de l'ID dans la liste des IDs
+                listIDs.push(tableIDs[randomIndex])
+            }
+            // ajout des id de la table dans le tableau de transition (si ils n'y sont pas déjà)
+            if (tableauTransitionID.indexOf(tableIDs[randomIndex]) === -1) {
+                // ajout de l'ID dans le tableau de transition 
+                tableauTransitionID.push(tableIDs[randomIndex]);
+            }
+            // boucle s'effectuant a la dérnière itération de la boucle
+            if(i == numberPersonOfGroup-1){
+                // dans le cas ou le groupe est trop petit
+                if(groupe.length < numberPersonOfGroup)
+                {
+                    // effacement de tout les membre du groupe
                     groupe.length =0;
-                    }
+                    // passage a vrai de la variable permettant de recommencer la boucle de création de groupe
+                    again = true;
                 }
-            // ajout des id de la table dans la list + ajout des id de la list dans blabla
-            if(listIDs.indexOf(tableIDs[randomId]) === -1){
-                listIDs.push(tableIDs[randomId])
-            }
-            if (tableauTransition.indexOf(tableIDs[randomId]) === -1) {
-                tableauTransition.push(tableIDs[randomId]);
-            }
-            if(groupe.length < nombrePerGroupe){
-                //again = true;
-            }
-            //else{
-                again = false;
-            //}
-            if(i == nombrePerGroupe-1){
-                if (tableauTransition.indexOf() === -1) {
-                    if(tableauTransition.length > nombrePerGroupe -1){
-                        grouID.push(tableauTransition.join(''));
+                else{
+                    // la variable est fausse la boucle ne recommencera pas 
+                    again = false;
+                }
+                // concaténation du tableau de transition des ID afin de créer les ID de groupe dans le cas ou il ne sont pas déjà utiliser
+                if (tableauTransitionID.indexOf() === -1) {
+                    // ajout de la concaténation des IDs du tableau de transition dans le groupID dans le cas ou la condition est valide
+                    if(tableauTransitionID.length > numberPersonOfGroup -1){
+                        // ajout de la concaténation des IDs dans le groupID
+                        groupID.push(tableauTransitionID.join(''));
                     }   
                 }
-                if(groupe.length > nombrePerGroupe -1){
+                // Concaténation des membre du groupe 
+                if(groupe.length > numberPersonOfGroup -1){
+                    // ajout de la concaténation des membre du groupe dans le cas ou ils n'y sont pas déjà
                     if (tableauTransitionPerson.indexOf(groupe.join('+')) === -1) {
+                        // ajout de la concaténation des membre du groupe 
                         tableauTransitionPerson.push(groupe.join('+'));
                     }
-                }    
+                }   
             }
         }
-        finalGroupID = grouID.filter((element, index, self) =>{
+        // filtarge des groupeID afin de ne garder que des groupId unique (prise en compte de l'ordre)
+        finalGroupID = groupID.filter((element, index, self) =>{
             return self.indexOf(element) === index;
         });
+        // filtarge des groupe afin de ne garder que des groupe unique (prise en compte de l'ordre)
         finalGroup = tableauTransitionPerson.filter((element, index, self) =>{
              return self.indexOf(element) === index;
         });
+        
 }
+// affichage des groupe
 function Affichage(){
     console.log(`again : ${again}`);
+    // lancement de la boucle tant que les groupe ne corresspende pas au condition demander 
     if(again === true){
         do{
             creationGroupe();
         }while(again !== false)
     }
+    // affichage de tout les groupe et de tout les IDs si les groupe sont bon
     if(again === false){
         console.log(`finalGroupe : ${finalGroup}`);
         console.log(`finalgroupID : ${finalGroupID}`);
     }
+
+    /*A FAIRE : FAIRE EN SORTE QUE LE GROUPE NE PRENNE PAS EN COMPTE L'ORDRE*/
 }
 
