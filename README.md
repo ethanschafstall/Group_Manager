@@ -6,13 +6,13 @@ Welcome to the Team Randomizer web app! This application helps you randomly orga
 
 1. **Enter Names:**
    - Type names into the input box.
-   - Press the **Enter** key after typing each name.
+   - Click on the submit button, or press the **Enter** key after typing each name.
 
 2. **Viewing the List:**
    - The list of entered names appears below the input box.
 
 3. **Remove Names:**
-   - To remove a name, click on the corresponding button in the list.
+   - To remove a name, click on the corresponding name.
 
 ## Creating Teams
 
@@ -42,7 +42,7 @@ Bienvenue sur l'application web de répartition d'équipes ! Cette application v
 
 1. **Saisir les Noms :**
    - Tapez les noms dans la zone de saisie.
-   - Appuyez sur la touche **Entrée** après avoir saisi chaque nom.
+   - Cliquez sur le button submit, ou appuyez sur la touche **Entrée** après avoir saisi chaque nom.
 
 2. **Visualiser la Liste :**
    - La liste des noms saisis apparaît sous la zone de saisie.
