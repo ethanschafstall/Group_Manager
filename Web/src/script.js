@@ -1,7 +1,6 @@
 // Global variables
 var names=[];
 var groups=[];
-var groupSize;
 var counter = 0;
 var index = 0;
 
@@ -60,9 +59,77 @@ function removeName(id){
     removeAllChildNodes();
     displayNameList();
 }
-// Function which saves user input for the desired group size.
-function saveGroupSize(size) {
-    groupSize = size;
-    console.log(groupSize);
+
+
+
+function getInputValue() { 
+    if (names.length == 0) {
+        return;
+    }
+    const sums = document.getElementById("groupSize");
+    const values = names.join(",");
+    const total = sums.value;
+    let person = values.split(",");
+  
+    let random = person.sort(() => Math.random() - 0.5);
+    console.log(random);
+  
+    function chunk(array, size) {
+      if (array.length <= size) {
+        return [array];
+      }
+      console.log([array.slice(0, size), ...chunk(array.slice(size), size)]);
+      return [array.slice(0, size), ...chunk(array.slice(size), size)];
+    }
+  
+    var team = chunk(random, total);
+  
+    const teamsContainer = document.getElementById('teamsContainer');
+    teamsContainer.classList.add('container');
+    teamsContainer.innerHTML = '';
+    teamsContainer.style.minWidth = '900px';
+    teamsContainer.style.width = 'auto';
+    teamsContainer.style.minHeight = '200px';
+    teamsContainer.style.height = 'auto';
+    teamsContainer.style.margin = '20px';
+
+    for (let i = 0; i < team.length; i++) {
+        const teamButton = document.createElement('button');
+        teamButton.textContent = `Group:${i + 1}: ${team[i].join(', ')}`;
+        teamButton.classList.add('group');
+        teamButton.classList.add('button');
+        teamsContainer.appendChild(teamButton);
+    }
+    addResetButton();
+  }
+
+  function resetScript() {
+    names = [];
+    groups = [];
+    counter = 0;
+    index = 0;
+
+    const nameList = document.getElementById('nameList');
+    nameList.innerHTML = '';
+
+    const teamsContainer = document.getElementById('teamsContainer');
+    teamsContainer.classList.remove('container');
+    teamsContainer.innerHTML = '';
+
+    const sums = document.getElementById("groupSize");
+    sums.value = '';
+
+    const inputBox = document.getElementById('name');
+    inputBox.value = '';
+
+    const resetButton = document.getElementById("reset");
+    resetButton.setAttribute("hidden", "hidden");
+
 }
 
+function addResetButton(){
+
+    const resetButton = document.getElementById("reset");
+    resetButton.removeAttribute("hidden");
+
+}

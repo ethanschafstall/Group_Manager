@@ -14,12 +14,12 @@
         <div id="names">
           <label for="name">Enter Name:</label>
           <input type="text" id="name" name="name" onfocus="this.value=''">
-          <button class="submit button" type="submit" onclick="addToList()">Submit</button>
+          <button class="submit button" type="submit" onclick="addToList();">Submit</button>
         </div>
     <br>
     <label for="groupSize">Enter Group Size:</label>
-    <input type="number" id="groupSize" name="groupSize" placeholder="No." oninput="saveGroupSize(this.value)">
-    <button class="create button" onclick="createGroupsv2();">Create Groups</button>
+    <input id="groupSize" name="groupSize" placeholder="No.">
+    <button class="create button" onclick="getInputValue();">Create Groups</button>
   </div>
       <div id="displayStudents" class="container">
         <ol id="nameList">
@@ -27,5 +27,7 @@
         </ol>
       </div>
     </main>
+    <div id="teamsContainer"></div>
+    <button hidden id="reset" class="button reset" onclick="resetScript();">reset</button>
     </body>
 </html>

@@ -57,14 +57,33 @@ input {
 .submit {
   background-color: #4caf50;
   padding: 10px;
+  margin-bottom: 10px;
 }
 .submit:hover {
   background-color: #3c8b3e;
-  padding: 10px;
+
 }
 .name, .create {
   background-color: #3498db;
   padding: 10px;
+}
+.group {
+  background-color: rgb(161, 78, 161);
+  padding: 10px;
+  width: max-content;
+}
+.reset {
+  background-color: rgb(194, 48, 48);
+  padding: 10px;
+  width: max-content;
+}
+.group:hover {
+  background-color: rgb(131, 64, 131);
+
+}
+.reset:hover {
+  background-color: rgb(148, 35, 35);
+
 }
 .create:hover {
   background-color: #2974a5;
