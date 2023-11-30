@@ -1,6 +1,6 @@
 # Group Manager Web App Documentation
 
-Welcome to the Team Randomizer web app! This application helps you randomly organize a list of names into groups for various activities. Below are simple instructions on how to use the app.
+Welcome to the Group Manager web app! This application helps you randomly organize a list of names into groups for various activities. Below are simple instructions on how to use the app.
 
 ## Getting Started
 
@@ -36,7 +36,7 @@ Welcome to the Team Randomizer web app! This application helps you randomly orga
 
 # Documentation de l'Application Web de Gestionnaire de groupe
 
-Bienvenue sur l'application web de répartition d'équipes ! Cette application vous aide à organiser de manière aléatoire une liste de noms en groupes pour différentes activités. Ci-dessous, vous trouverez des instructions simples sur la façon d'utiliser l'application.
+Bienvenue sur l'application web Gestionnaire de groupe ! Cette application vous aide à organiser de manière aléatoire une liste de noms en groupes pour différentes activités. Ci-dessous, vous trouverez des instructions simples sur la façon d'utiliser l'application.
 
 ## Pour Commencer
 
