@@ -37,7 +37,22 @@ Welcome to the Group Manager web app! This application helps you randomly organi
 # Documentation de l'Application Web de Gestionnaire de groupe
 
 Bienvenue sur l'application web Gestionnaire de groupe ! Cette application vous aide à organiser de manière aléatoire une liste de noms en groupes pour différentes activités. Ci-dessous, vous trouverez des instructions simples sur la façon d'utiliser l'application.
+## Installation
 
+1. **Clone du Git :**
+   - Commencez par insatller GitHub Desktop ainsi que Visual Studio Code .
+   - Connectez-vous à GitHub Desktop et cloner le repertoire Git.
+   - Aller à l'emplacement du clone et ouvrez le dossier Web avec Visula Studio Code.
+   - Une fois dans VSCode aller dans la pertie extension et installez LiveServer.
+   - Rendez-vous dans la partie code HTML du dossier et lancer le serveur tout en bas à droite de l'écran.
+   - Choisissez le fichier Index.
+   
+2. **Visualiser la Liste :**
+   - La liste des noms saisis apparaît sous la zone de saisie.
+
+3. **Supprimer des Noms :**
+   - Pour supprimer un nom, cliquez sur le bouton correspondant dans la liste.
+   
 ## Pour Commencer
 
 1. **Saisir les Noms :**
