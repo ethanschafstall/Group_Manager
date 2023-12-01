@@ -1,7 +1,16 @@
 # Group Manager Web App Documentation
 
 Welcome to the Group Manager web app! This application helps you randomly organize a list of names into groups for various activities. Below are simple instructions on how to use the app.
+## Installation
 
+1. **Git Clone :**
+   - Start by installing GitHub Desktop as well as Visual Studio Code.
+   - Log in to GitHub Desktop and clone the Git repository.
+   - Navigate to the location of the clone and open the Web folder with Visual Studio Code.
+   - Once in VSCode, go to the extension section and install LiveServer.
+   - Go to the HTML code section of the folder and launch the server at the bottom right of the screen.
+   - Select the Index file.
+   
 ## Getting Started
 
 1. **Enter Names:**
