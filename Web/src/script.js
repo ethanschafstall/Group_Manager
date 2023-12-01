@@ -92,11 +92,17 @@ function getInputValue() {
     teamsContainer.style.minHeight = '200px';
     teamsContainer.style.height = 'auto';
     teamsContainer.style.margin = '20px';
+    if (team.length > 5) {
+        teamsContainer.style.display = "grid";
+        teamsContainer.style.gridTemplateColumns = "repeat(5, 1fr)";
+        teamsContainer.style.gap = "10px";
+    }
 
     for (let i = 0; i < team.length; i++) {
         const teamButton = document.createElement('button');
         teamButton.textContent = `Group:${i + 1}: ${team[i].join(', ')}`;
         teamButton.classList.add('group');
+        teamButton.style.height = 'min-content';
         teamButton.classList.add('button');
         teamsContainer.appendChild(teamButton);
     }
