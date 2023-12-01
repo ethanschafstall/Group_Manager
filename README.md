@@ -47,12 +47,6 @@ Bienvenue sur l'application web Gestionnaire de groupe ! Cette application vous 
    - Rendez-vous dans la partie code HTML du dossier et lancer le serveur tout en bas à droite de l'écran.
    - Choisissez le fichier Index.
    
-2. **Visualiser la Liste :**
-   - La liste des noms saisis apparaît sous la zone de saisie.
-
-3. **Supprimer des Noms :**
-   - Pour supprimer un nom, cliquez sur le bouton correspondant dans la liste.
-   
 ## Pour Commencer
 
 1. **Saisir les Noms :**
